@@ -9,6 +9,9 @@ defmodule Linkly.Application do
   def start(_type, _args) do
     children = [
 
+      # This piece of configuration will start the Ecto process which receives
+      # and executes our application's queries. Without it, we wouldn't be able to query the
+      # database at all!
       Linkly.Repo
       # Starts a worker by calling: Linkly.Worker.start_link(arg)
       # {Linkly.Worker, arg}

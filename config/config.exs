@@ -1,5 +1,7 @@
-import Mix.Config
+import Config
 
-config :linkly, :ecto_repos, {Linkly.Repo}
-
-import_config "#{Mix.env}.exs"
+config :linkly, Linkly.Repo,
+  database: "linkly_repo",
+  username: "user",
+  password: "pass",
+  hostname: "localhost"
