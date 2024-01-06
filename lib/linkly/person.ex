@@ -13,4 +13,35 @@ defmodule Linkly.Person do
     field :last_name, :string
     field :age, :integer
   end
+
+  # define changeset
+  @doc """
+
+  - in IEx -
+
+
+    person = %Friends.Person{}
+
+    changeset = Friends.Person.changeset(person, %{})
+
+    Friends.Repo.insert(changeset)
+
+  The changeset knows about the person, the changes and the validation rules that must be met
+  before the data can be entered into the database.
+
+  """
+  def changeset(person, params \\ %{}) do
+    person
+    # Casting tells the changeset what parameters are allowed to be passed through in this changeset,
+    # and anything not in the list will be ignored.
+    |> Ecto.Changeset.cast(params, [:first_name, :last_name, :age])
+    # Validate_required which says that, for this changeset, we expect first_name and last_name
+    # to have values specified.
+    |> Ecto.Changeset.validate_required([:first_name, :last_name])
+  end
+
+
+
+
+
 end
